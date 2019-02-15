@@ -17,7 +17,7 @@ MVP: Enter a starting point and a end point: NYC, NY to NO, LA
 Second Idea:
 
 Activity App based on weather, season, time of the day
-  Weather Based Activity App uses the Weather Channel API to determine current weather conditions, and the results are used to       recommend activities to the user with the Yelp GraphQL API.
+  Weather Based Activity App uses the Weather Channel API to determine current weather conditions, and the results are used to recommend activities to the user with the Yelp GraphQL API.
   This API allows us to compare ratings of different places, and we can use this data to order recommendations.
   Oath can be done with Google or Facebook. 
 
