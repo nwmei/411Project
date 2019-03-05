@@ -1,0 +1,21 @@
+User Stories
+
+Story 1
+
+As a user, I want to be able to log in to the web app through Facebook Oauth in order to log in securely and have preferences saved, to show that I logged in. On the web application, there should be a login button, and when that button is pressed, there should be an option to log in through Facebook. When the Facebook button is pressed,
+Condition of Satisfaction: The user is logged in. 
+Exception: If the user does not have a Facebook account, the user would have to create one before logging into the web application.
+Exception: If the user presses Facebook login and then refuses the application to use their Facebook authentication details, the user would be redirected to the application.
+
+
+Story 2
+
+As a logged in user, I want to enter starting and ending points and get live directions from Google Maps, throughout my trip. This should be to my closest destination, either points of interest or the lodging for the night. All destinations should be on the way to the overall destination. 
+Conditions of Satisfaction: That the added trip does not add more than 30 mins to the overall driving time 
+Exception: 
+
+
+Story 3
+
+As a logged in user, I want to have a live voice guidance of how close my next destination/place of interest is so that I would not have to look at my phone, while driving, to know how far I am from my destination and be able to turn this feature on and off in settings.
+Exceptions: If the driver misses the turn or changes the route, the voice should give him the updated information and/or say about the alternative options.
