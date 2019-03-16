@@ -1,0 +1,27 @@
+{
+  "name": "411project",
+  "version": "1.0.0",
+  "description": "411 app",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nwmei/411Project.git"
+  },
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*",
+    "mongoose": "*"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nwmei/411Project/issues"
+  },
+  "homepage": "https://github.com/nwmei/411Project#readme"
+}
