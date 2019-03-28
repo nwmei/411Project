@@ -33,7 +33,6 @@ router.post('/', function (req, res) {
               var temp = [ret[i]['name'], ret[i]['rating'], ret[i]['phone']];
               arr.push(temp);
           }
-          console.log(arr);
           res.render('index', { arr: arr});
       })
       .catch(function (err) {
