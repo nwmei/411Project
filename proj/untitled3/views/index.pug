@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  form(method='POST' action='/')
+    div.form-group
+      label(for='location') Location:
+      input#location.form-control(type='text', placeholder='Location' name='location')
+    div.form-group
+      label(for='startdate') Start Date:
+      input#startdate.form-control(type='text', placeholder='Start Date' name='startdate')
+    div.form-group
+      label(for='enddate') End Date:
+      input#enddate.form-control(type='text', placeholder='End Date' name='enddate')
+    button.btn.btn-primary(type='submit') Sign up:
+  table(style='width:100%', border='1')
+    tr
+      th Neighborhood
+      th Price
+    each val in arr
+      tr
+        td #{val[0]}
+        td #{val[1]}
