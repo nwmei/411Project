@@ -1,8 +1,33 @@
 body {
   padding: 50px;
+  /*
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  */
+  font-family: 'Montserrat', sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+th {
+  text-align: left;
+  padding-bottom: 8px;
+  border-bottom: 2px solid black;
+  padding-left: 15px;
+  padding-right: 20px;
+}
+
+td {
+  padding-top: 9px;
+  padding-left: 15px;
+  padding-right: 40px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+tr:hover {
+  background-color: #e8e9ea;
 }
