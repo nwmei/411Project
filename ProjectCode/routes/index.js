@@ -27,7 +27,14 @@ router.post('/', function (req, res) {
 
   rp(options)
       .then(function (repos) {
-          res.render('index', { json: repos});
+          var arr = [];
+          var ret = repos['businesses'];
+          for (var i = 0; i < ret.length; i++) {
+              var temp = [ret[i]['name'], ret[i]['rating'], ret[i]['phone']];
+              arr.push(temp);
+          }
+          console.log(arr);
+          res.render('index', { arr: arr});
       })
       .catch(function (err) {
         console.log(err);
