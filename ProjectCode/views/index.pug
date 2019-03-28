@@ -14,4 +14,9 @@ block content
     tr
       th Name
       th Rating
-  p #{json}
+      th Phone
+    each val in arr
+      tr
+        td #{val[0]}
+        td #{val[1]}
+        td #{val[2]}
