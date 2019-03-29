@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+const yelpConfig = require('../.idea/runConfigurations/api_key');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -20,7 +22,7 @@ router.post('/', function (req, res) {
     },
     headers: {
         'User-Agent': 'Request-Promise',
-        'Authorization': 'bearer ' + ''
+        'Authorization': 'bearer ' + yelpConfig.API_KEY
     },
     json: true
   };
