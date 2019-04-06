@@ -10,6 +10,7 @@ html.
          * element that contains the map. */
         #map {
           height: 100%;
+          width: 90%;
         }
         /* Optional: Makes the sample page fill the window. */
         html, body {
@@ -86,9 +87,20 @@ html.
         }
 
         function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+          var waypts = [];
+          waypts.push({
+                       location: 'chicago, il',
+                       stopover: true
+                     });
+
+          waypts.push({
+                       location: 'madison, wi',
+                       stopover: true
+                     });
           directionsService.route({
             origin: document.getElementById('start').value,
             destination: document.getElementById('end').value,
+            waypoints: waypts,
             travelMode: 'DRIVING'
           }, function(response, status) {
             if (status === 'OK') {
