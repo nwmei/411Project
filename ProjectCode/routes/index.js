@@ -4,7 +4,9 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { arr: [] });
+  const APIKEYS = require('../.idea/runConfigurations/api_key');
+  res.render('map', { google_maps: APIKEYS.GOOGLE_MAPS});
+  //res.render('index', { arr: [] });
 });
 
 
@@ -13,7 +15,7 @@ router.post('/', function (req, res) {
   var dest = req.body.location;
   var term = req.body.search;
 
-  const yelpConfig = require('../.idea/runConfigurations/api_key');
+  const APIKEYS = require('../.idea/runConfigurations/api_key');
 
   var options = {
     uri: 'https://api.yelp.com/v3/businesses/search',
@@ -23,7 +25,7 @@ router.post('/', function (req, res) {
     },
     headers: {
         'User-Agent': 'Request-Promise',
-        'Authorization': 'bearer ' + yelpConfig.API_KEY
+        'Authorization': 'bearer ' + APIKEYS.YELP
     },
     json: true
   };
