@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-const yelpConfig = require('../.idea/runConfigurations/api_key');
 
 
 /* GET home page. */
@@ -13,6 +12,8 @@ router.post('/', function (req, res) {
   var rp = require('request-promise');
   var dest = req.body.location;
   var term = req.body.search;
+
+  const yelpConfig = require('../.idea/runConfigurations/api_key');
 
   var options = {
     uri: 'https://api.yelp.com/v3/businesses/search',
