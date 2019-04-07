@@ -36,6 +36,17 @@ function findAll(collection, callback) {
 }
 
 
+function dropCollection(collection) {
+    MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("mydb");
+        dbo.collection(collection).drop(function(err, delOK) {
+            db.close();
+        });
+    });
+}
+
+
 createCollection("RoadTrips");
 var obj = {
     'number': 1,
