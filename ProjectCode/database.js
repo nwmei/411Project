@@ -23,14 +23,14 @@ function insertIntoCollection(collection, obj) {
     });
 }
 
-function findAll(collection) {
+function findAll(collection, callback) {
     MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
         if (err) throw err;
         var dbo = db.db("mydb");
         dbo.collection(collection).find({}).toArray(function(err, result) {
             if (err) throw err;
             db.close();
-            console.log(result);
+            return callback(result);
         });
     });
 }
@@ -42,4 +42,7 @@ var obj = {
     'number2': 2
 };
 insertIntoCollection("RoadTrips", obj);
-console.log(findAll('RoadTrips'));
+
+var employees = findAll("RoadTrips", function(result) {
+    console.log(result);
+});
