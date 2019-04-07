@@ -23,11 +23,11 @@ function insertIntoCollection(collection, obj) {
     });
 }
 
-function findAll(collection, callback) {
+function findAll(collection, query, callback) {
     MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
         if (err) throw err;
         var dbo = db.db("mydb");
-        dbo.collection(collection).find({}).toArray(function(err, result) {
+        dbo.collection(collection).find(query).toArray(function(err, result) {
             if (err) throw err;
             db.close();
             return callback(result);
@@ -47,13 +47,16 @@ function dropCollection(collection) {
 }
 
 
-createCollection("RoadTrips");
 var obj = {
-    'number': 1,
-    'number2': 2
+    'origin': "boston, ma",
+    'destination': "san francisco, ca"
 };
 insertIntoCollection("RoadTrips", obj);
 
-var employees = findAll("RoadTrips", function(result) {
+var mongo = require('mongodb');
+var o_id = new mongo.ObjectID('5caa53aff090e2543043da8d');
+var query = { _id: o_id };
+
+var employees = findAll("RoadTrips", query,function(result) {
     console.log(result);
 });

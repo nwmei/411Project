@@ -3,8 +3,11 @@ var router = express.Router();
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/:id', function(req, res, next) {
   const APIKEYS = require('../.idea/runConfigurations/api_key');
+
+  var tripId = req.params['id'];
+  
   res.render('map', { google_maps: APIKEYS.GOOGLE_MAPS});
   //res.render('index', { arr: [] });
 });
