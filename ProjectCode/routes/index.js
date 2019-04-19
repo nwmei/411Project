@@ -2,14 +2,76 @@ var express = require('express');
 var router = express.Router();
 
 
-/* GET home page. */
+
+
+// -------------------------------------------- START OAUTH CODE -----------------------------------------------------//
+var passport = require('passport');
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const APIKEYS = require('../.idea/runConfigurations/api_key');
+
+passport.use(new GoogleStrategy({
+        clientID: APIKEYS.GOOGLE_AUTH_CLIENT,
+        clientSecret: APIKEYS.GOOGLE_AUTH_SECRET,
+        callbackURL: APIKEYS.GOOGLE_AUTH_CALLBACK
+    },
+    function(accessToken, refreshToken, profile, done) {
+        done(null, profile);
+    }
+));
+
+
+passport.serializeUser((user, done) => {
+    done(null, user);
+});
+
+passport.deserializeUser((user, done) => {
+    done(null, user);
+});
+
+function isUserAuthenticated(req, res, next) {
+    if (req.user) {
+        next();
+    } else {
+        res.redirect('/');
+    }
+}
+
+router.get('/auth/google',
+    passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
+
+
+router.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: '/login' }),
+    function(req, res) {
+        res.redirect('/');
+});
+
+// ---------------------------------------------- END OAUTH CODE -----------------------------------------------------//
+
+router.get('/', function(req, res) {
+    if (req.isAuthenticated()) {
+        res.send(req.user.id);
+    } else {
+        res.redirect("/login");
+    }
+});
+
+router.get("/login", function(req, res) {
+    res.render('login');
+});
+
+
+router.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+});
+
 router.get('/trip/:id', function(req, res, next) {
   const APIKEYS = require('../.idea/runConfigurations/api_key');
 
   var tripId = req.params['id'];
   
   res.render('map', { google_maps: APIKEYS.GOOGLE_MAPS});
-  //res.render('index', { arr: [] });
 });
 
 
